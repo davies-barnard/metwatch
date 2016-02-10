@@ -1,0 +1,89 @@
+## metwatch for weewx - Copyright 2016 Chris Davies-Barnard
+#errorCatcher Echo
+#encoding UTF-8
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <!-- METWatch for weewx - Copyright Chris Davies-Barnard-->
+
+    <title>MET Watch</title>
+
+    <style>
+			body {
+				font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+			  font-size: 10px;
+			  background-color: #ffffff;
+				width:75%;
+				margin: 10px auto;
+				text-align:center;
+			}
+			
+			a { color:black; text-decoration:none; }
+			
+			div { margin-bottom:10px; }
+			
+			div.alert-box{
+				color:#555;
+				border:1px solid #555;
+				border-radius:10px;
+				padding:10px 10px 10px 36px;
+			}
+			
+			.takeaction { background:#c03; }
+			.beprepared { background:#f93; }
+			.warning { background:#ff6; }
+			
+			div.notice {
+			    background:#e3f7fc;
+			    border:1px solid #8ed9f6;
+			}
+
+			table.gridtable {
+				color:#333333;
+ 				border-radius:10px;				
+				border-width: 1px;
+				border-color: #666666;
+				border-collapse: collapse;
+				width:100%;
+			}
+			table.gridtable th {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #666666;
+				background:#e3f7fc;
+			}
+			table.gridtable td {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #666666;
+				background-color: #ffffff;
+			}
+		</style>
+  </head>
+
+  <body>
+			
+		<!-- The Warnings -->
+		#if $metall
+			#for $alert in $metall
+				<div class="alert-box alert $alert.warningkind.lower()">
+					<h1><a href="$alert.link">$alert.title</a></h1>
+					<h2>Affecting: $alert.affects</h2>
+					<h3>Valid From: $alert.validfrom</h3>					
+					<p>$alert.warninglevel | $alert.warningkind | $alert.warningtype</p>
+				</div>
+			#end for
+		#else
+			<p>Currently no alerts</p>
+		#end if
+		
+		<!-- The Copyright Statement -->
+		<div class="alert-box notice">
+			<p>This is a <a href="$metstatus.link">$metstatus.description</a> published $metstatus.pubdate under $metstatus.copyright</p>
+		</div>
+
+		
+  </body>
+</html>
