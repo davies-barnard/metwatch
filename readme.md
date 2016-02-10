@@ -1,21 +1,27 @@
-metwatch - weewx extension that implements uses an RSS Feed from the UK Met Office to 
+# metwatch 
+
+weewx extension that implements uses an RSS Feed from the UK Met Office to 
 provide template variables to alert to weather alerts
 
 Copyright 2016 Chris Davies
 
-Installation instructions:
+## Installation instructions:
 
 1) run the installer:
 
-setup.py install --extension extensions/metwatch
-#./bin/wee_extension --install=extensions/metwatch.tar.gz
+./bin/wee_extension --install=extensions/metwatch-master.zip
+
+or 
+
+setup.py install --extension extensions/metwatch-master
+
 
 2) restart weewx:
 
 sudo /etc/init.d/weewx stop
 sudo /etc/init.d/weewx start
 
-Manual installation instructions:
+## Manual installation instructions:
 
 1) copy files to the weewx user directory:
 
